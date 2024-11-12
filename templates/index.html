@@ -116,13 +116,9 @@
     {% if site %}
     <h2>Results for: {{ site }}</h2>
     <div class="results">
-        <p>IP: 172.217.11.174</p>
-        <p>Created Date: 1997-09-15T00:00:00-0700</p>
-        <p>Updated Date: 2018-02-21T10:45:07-0800</p>
-        <p>Expires Date: 2020-09-13T21:00:00-0700</p>
-        <p>Registrant: Google LLC</p>
-        <p>Status: clientUpdateProhibited</p>
-        <p>Domain Availability: UNAVAILABLE</p>
+        {% for ip in ip_list %}
+        <p>IP: {{ ip }}</p>
+        {% endfor %}
     </div>
     {% endif %}
 </div>

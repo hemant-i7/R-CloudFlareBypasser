@@ -15,8 +15,8 @@ yl = colorama.Fore.LIGHTGREEN_EX
 
 # Function to generate banner
 def banner():
-    fg = pyfiglet.Figlet(font="small").renderText("RemaxBox Team")
-    return bl + fg + rd + "CloudFlare bypasser , Get Real IP of website\n" + mag + "Created By Maximum Radikali"
+    fg = pyfiglet.Figlet(font="small").renderText("GENX Team")
+    return bl + fg + rd + "CloudFlare bypasser, Get Real IP of website\n"
 
 # Function to get the real IP of subdomains
 def get_real_ips(site):
@@ -26,7 +26,7 @@ def get_real_ips(site):
             k = i.strip()
             try:
                 fs = socket.gethostbyname(k + site)
-                results.append(gn + fs + cv)
+                results.append(fs)  # Removed color for proper rendering
             except:
                 pass
     return results
@@ -40,6 +40,8 @@ def get_ips():
     site = request.form['site']
     if site:
         ip_list = get_real_ips(site)
+        if not ip_list:
+            return render_template('index.html', banner=banner(), error="No real IP found for the given site!")
         return render_template('index.html', banner=banner(), site=site, ip_list=ip_list)
     return render_template('index.html', banner=banner(), error="No URL provided!")
 
